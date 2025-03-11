@@ -1,6 +1,7 @@
 import { create } from "zustand";
+import { type } from "./type";
 
-export const useLightMode = create((set) => ({
+export const useLightMode = create<type>((set) => ({
     lightMode: true,
-    setLightMode: () => set((lightMode: boolean) => ({ lightMode: !lightMode }))
+    setLightMode: () => set((state) => ({ lightMode: !state.lightMode})),
 }));
