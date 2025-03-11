@@ -1,8 +1,11 @@
 import { ContainerWrapper } from "../styles/container";
+import { useLightMode } from "../store/mode";
 
 const Container = () => {
+    const { lightMode } = useLightMode();
+    
     return (
-        <ContainerWrapper>
+        <ContainerWrapper lightMode={lightMode}>
         </ContainerWrapper>
     )
 }
