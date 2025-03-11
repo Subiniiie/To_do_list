@@ -1,5 +1,5 @@
 export const color = {
-    lmContainer: "#FFFFFF",
+    lmContainer: "rgba(255,255,255,0.7)",
     lmArticle: "#FFF6CC",
     lmToggle: "#FFE97F",
     lmToggleBorder: "#FFE14C",
