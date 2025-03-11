@@ -7,7 +7,4 @@ export const ContainerWrapper = styled.div<{ lightMode: boolean }>`
     background-color: ${({ lightMode }) => (lightMode ? color.lmContainer : "#000000")};
     opacity: 0.7;
     border-radius: 15%;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
 `
