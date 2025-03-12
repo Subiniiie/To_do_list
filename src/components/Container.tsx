@@ -7,7 +7,7 @@ const Container = () => {
     
     return (
         <ContainerWrapper lightMode={lightMode}>
-            <Title></Title>
+            <Title />
         </ContainerWrapper>
     )
 }
