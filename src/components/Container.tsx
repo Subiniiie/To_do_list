@@ -1,6 +1,7 @@
 import { ContainerWrapper } from "../styles/container";
 import { useLightMode } from "../store/mode";
 import Title from "./Title";
+import SubTitle from "./SubTitle";
 
 const Container = () => {
     const { lightMode } = useLightMode();
@@ -8,6 +9,7 @@ const Container = () => {
     return (
         <ContainerWrapper lightMode={lightMode}>
             <Title />
+            <SubTitle />
         </ContainerWrapper>
     )
 }
