@@ -3,6 +3,7 @@ import { useLightMode } from "../store/mode";
 import Title from "./Title";
 import SubTitle from "./SubTitle";
 import SettingBtn from "./SettingBtn";
+import ToggleBtn from "./ToggleBtn";
 
 const Container = () => {
     const { lightMode } = useLightMode();
@@ -11,6 +12,7 @@ const Container = () => {
         <ContainerWrapper lightMode={lightMode}>
             <Title />
             <SettingBtn />
+            <ToggleBtn />
             <SubTitle />
         </ContainerWrapper>
     )

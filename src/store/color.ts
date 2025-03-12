@@ -17,4 +17,6 @@ export const color = {
     completeBorder: "#A9D6E5",
     delete: "#E01E37",
     deleteBorder: "#C71F37",
+    toggleCircle: '#F6F0F0',
+    toggleCircleBorder: '#EEEEEE',
 }
