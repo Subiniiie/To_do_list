@@ -10,4 +10,5 @@ export const SettingBtnWrapper = styled.button`
     font-family: 'Cafe24Ohsquare';
     display: flex;
     justify-content: center;
+    cursor: pointer;
 `

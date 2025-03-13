@@ -11,7 +11,7 @@ import { BoxWrapper } from "../styles/box";
 
 const Container = () => {
     const { lightMode } = useLightMode();
-    
+
     return (
         <ContainerWrapper lightMode={lightMode}>
             <HeaderContainer>
