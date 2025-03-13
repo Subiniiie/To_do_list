@@ -1,13 +1,10 @@
 import { ToggleBtnWrapper } from "../styles/toggleBtn";
 import { useLightMode } from "../store/mode";
+import useToggle from "../hooks/useToggle";
 
 const ToggleBtn = () => {
-    const { setLightMode, lightMode } = useLightMode();
-
-    const changeMode = () => {
-        console.log('mode changed')
-        setLightMode();
-    }
+    const { lightMode } = useLightMode();
+    const { changeMode } = useToggle();
 
     return (
         <ToggleBtnWrapper onClick={changeMode}>
