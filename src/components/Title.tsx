@@ -1,9 +1,11 @@
 import { TitleWrapper } from "../styles/title";
+import { useLightMode } from "../store/mode";
 
 const Title = () => {
+    const { lightMode } = useLightMode();
 
     return (
-        <TitleWrapper>
+        <TitleWrapper lightMode={lightMode}>
             투두리스트
         </TitleWrapper>
     )
