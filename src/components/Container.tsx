@@ -7,6 +7,7 @@ import ToggleBtn from "./ToggleBtn";
 import Input from "./Input";
 import { HeaderContainer } from "../styles/header";
 import { BtnsContainer } from "../styles/Btns";
+import { BoxWrapper } from "../styles/box";
 
 const Container = () => {
     const { lightMode } = useLightMode();
@@ -22,6 +23,7 @@ const Container = () => {
             </HeaderContainer>
             <SubTitle />
             <Input />
+            <BoxWrapper />
         </ContainerWrapper>
     )
 }
