@@ -4,6 +4,7 @@ import Title from "./Title";
 import SubTitle from "./SubTitle";
 import SettingBtn from "./SettingBtn";
 import ToggleBtn from "./ToggleBtn";
+import Input from "./Input";
 
 const Container = () => {
     const { lightMode } = useLightMode();
@@ -14,6 +15,7 @@ const Container = () => {
             <SettingBtn />
             <ToggleBtn />
             <SubTitle />
+            <Input />
         </ContainerWrapper>
     )
 }
