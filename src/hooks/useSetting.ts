@@ -8,7 +8,6 @@ const useSetting = () => {
     };
 
     useEffect(() => {
-        console.log('옵션 창 열자', openSetting)
     }, [openSetting]);
 
     return {

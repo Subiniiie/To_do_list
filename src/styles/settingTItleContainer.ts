@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
+export const SettingTitleContainer = styled.div`
     display: flex;
-    position: relative;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
 `

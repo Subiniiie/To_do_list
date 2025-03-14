@@ -9,21 +9,22 @@ import { HeaderContainer } from "../styles/header";
 import { BtnsContainer } from "../styles/Btns";
 import { BoxWrapper } from "../styles/box";
 import useSetting from "../hooks/useSetting";
-import { SettingOptionWrapper } from "../styles/settingOption";
+import SettingOption from "./SettingOption";
 
 const Container = () => {
     const { lightMode } = useLightMode();
-    const { openSetting } = useSetting();
+    const { openSetting, handleSettingBtn } = useSetting();
+
 
     return (
         <ContainerWrapper lightMode={lightMode}>
             <HeaderContainer>
                 <Title />
                 <BtnsContainer>
-                    <SettingBtn />
+                    <SettingBtn handleSettingBtn={handleSettingBtn} />
                     <ToggleBtn />
                 </BtnsContainer>
-                {openSetting && <SettingOptionWrapper />}
+                {openSetting && <SettingOption />}
             </HeaderContainer>
             <SubTitle />
             <Input />
