@@ -8,6 +8,7 @@ export const ToggleBtnWrapper = styled.div`
         border-radius: 30px;
         border: 2px solid ${color.dmToggleBorder};
         background-color: ${color.dmToggle};
+        cursor: pointer;
     }
     .toggle--checked {
         background-color: ${color.lmToggle};
