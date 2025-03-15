@@ -13,3 +13,8 @@ export interface ListType {
     todos: Todo[];
     setTodos: (title: string, date: Date) => void;
 };
+
+export interface Content {
+    open: boolean;
+    setOpen : () => void;
+}

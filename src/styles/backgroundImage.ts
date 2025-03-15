@@ -6,7 +6,7 @@ export const BackgroundWrapper = styled.div`
     background-size: cover;
     height: 100vh;
     opacity: 0.8;
-    display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
 `

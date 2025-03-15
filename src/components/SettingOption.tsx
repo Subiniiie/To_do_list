@@ -9,16 +9,18 @@ import plus_btn_white from "../assets/icon/plus_btn_white.png";
 import checkmark_black from "../assets/icon/checkmark_black.png";
 import checkmark_white from "../assets/icon/checkmark_white.png"
 import { useLightMode } from "../store/mode";
+import useCreate from "../hooks/usecreate";
 
 const SettingOption = () => {
     const title = ["새로 만들기", "선택", "생성 순", "가장 최신 순"];
     const { lightMode } = useLightMode();
+    const { handleModal } = useCreate();
 
     return (
         <SettingOptionWrapper lightMode = {lightMode}>
             {title.map((t, i) => 
                 <SettingOptionContainer key={i}>
-                    <SettingTitleContainer>
+                    <SettingTitleContainer onClick={() => handleModal(i)}>
                         <SettingTitleWrapper lightMode = {lightMode}>
                             {t}
                         </SettingTitleWrapper>

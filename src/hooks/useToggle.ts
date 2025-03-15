@@ -5,7 +5,8 @@ const useToggle = () => {
 
     const changeMode = () => {
         setLightMode();
-    }
+    };
+    
     return {
         changeMode
     }
