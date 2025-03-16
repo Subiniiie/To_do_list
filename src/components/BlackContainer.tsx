@@ -1,5 +1,5 @@
 import { BlackContainer } from "../styles/blackContainer";
-import { ContentWrapper } from "../styles/content";
+import ContentContainer from "./ContentContainer";
 import useCreate from "../hooks/usecreate";
 
 const BlackBackground = () => {
@@ -7,7 +7,7 @@ const BlackBackground = () => {
 
     return (
         <BlackContainer onClick={clickBlackContaniner}>
-            <ContentWrapper />
+            <ContentContainer />
         </BlackContainer>
     )
 }
