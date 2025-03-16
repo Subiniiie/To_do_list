@@ -27,4 +27,5 @@ export const color = {
     deleteBorder: "#C71F37",
     toggleCircle: '#F6F0F0',
     toggleCircleBorder: '#EEEEEE',
+    modalInput: '#F6F0F0',
 }

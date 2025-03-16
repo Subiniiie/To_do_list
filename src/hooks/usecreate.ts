@@ -1,3 +1,4 @@
+import React from "react";
 import { useOpen } from "../store/content";
 import useSetting from "./useSetting";
 
@@ -14,11 +15,16 @@ const useCreate = () => {
     const clickBlackContaniner = () => {
         handleModal(0);
         handleSettingBtn();
-    }
+    };
+
+    const prohibitClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.stopPropagation();
+    };
 
     return {
         handleModal,
-        clickBlackContaniner
+        clickBlackContaniner,
+        prohibitClick
     }
 }
 
