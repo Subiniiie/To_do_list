@@ -5,10 +5,12 @@ import { ContentTitleWrapper } from "../styles/contentTitle";
 import { ContentInputWrapper } from "../styles/contentInput";
 import { ContentInputDateWrapper } from "../styles/contentInputDate";
 import { CreateBtnWrapper } from "../styles/createBtn";
+import { CheckedBoxWrapper } from "../styles/checkedBox";
+import { CheckedBoxTitleWrapper } from "../styles/checkedBoxTitle";
 
 const ContentContainer = () => {
     const { lightMode } = useLightMode();
-    const { prohibitClick, onChange, handleSubmit, value } = useCreate();
+    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, value, checkedAllDay } = useCreate();
     const dateIndex = [0, 1];
 
     return (
@@ -24,6 +26,13 @@ const ContentContainer = () => {
             {dateIndex.map((dateIndex) => 
                 <ContentInputDateWrapper key={dateIndex}/>
             )}
+            <CheckedBoxWrapper
+                checked={checkedAllDay}
+                onChange={checkboxOnChange}
+            />
+            <CheckedBoxTitleWrapper lightMode={lightMode}>
+                당일만
+            </CheckedBoxTitleWrapper>
             <CreateBtnWrapper onClick={handleSubmit}>
                 완료
             </CreateBtnWrapper>

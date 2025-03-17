@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { useOpen } from "../store/content";
 import useSetting from "./useSetting";
 
@@ -6,6 +6,7 @@ const useCreate = () => {
     const { setOpen } = useOpen();
     const { handleSettingBtn } = useSetting();
     const [ value, setValue ] = useState<string>('');
+    const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
 
     const handleModal = ( index: number ) => {
         if (index == 0) {
@@ -32,15 +33,25 @@ const useCreate = () => {
         setOpen();
     };
 
+    const checkboxOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setCheckedAllDay((checkedAllDay) => !checkedAllDay);
+    };
+
+    useEffect(() => {
+        console.log('체크 상황', checkedAllDay)
+    }, [checkedAllDay])
+
 
 
     return {
         value,
+        checkedAllDay,
         handleModal,
         clickBlackContaniner,
         prohibitClick,
         onChange,
-        handleSubmit
+        handleSubmit,
+        checkboxOnChange
     }
 }
 
