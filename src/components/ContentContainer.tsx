@@ -8,7 +8,7 @@ import { CreateBtnWrapper } from "../styles/createBtn";
 
 const ContentContainer = () => {
     const { lightMode } = useLightMode();
-    const { prohibitClick } = useCreate();
+    const { prohibitClick, onChange, handleSubmit, value } = useCreate();
     const dateIndex = [0, 1];
 
     return (
@@ -16,11 +16,15 @@ const ContentContainer = () => {
             <ContentTitleWrapper lightMode={lightMode}>
                 새로운 목록을 생성합니다.
             </ContentTitleWrapper>
-            <ContentInputWrapper placeholder="내용" />
+            <ContentInputWrapper 
+                placeholder="내용" 
+                value={value}
+                onChange={onChange}
+            />
             {dateIndex.map((dateIndex) => 
                 <ContentInputDateWrapper key={dateIndex}/>
             )}
-            <CreateBtnWrapper>
+            <CreateBtnWrapper onClick={handleSubmit}>
                 완료
             </CreateBtnWrapper>
         </ContentWrapper>

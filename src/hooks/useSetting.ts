@@ -4,7 +4,6 @@ const useSetting = () => {
     const [ openSetting, setOpenSetting ] = useState<boolean>(false);
 
     const handleSettingBtn = () => {
-        // console.log("check", openSetting)
         setOpenSetting((openSetting) => !openSetting);
     };
 
