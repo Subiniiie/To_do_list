@@ -40,9 +40,15 @@ const useCreate = () => {
     };
 
     useEffect(() => {
-    }, [checkedAllDay, startDate, endDate]);
+        if (checkedAllDay) {
+            setEndDate(startDate);
+            console.log('끝나랒', endDate)
+        }
+    }, [checkedAllDay, startDate]);
 
-
+    useEffect(() => {
+        console.log('끝 날짜', endDate)
+    }, [endDate]);
 
     return {
         value,
