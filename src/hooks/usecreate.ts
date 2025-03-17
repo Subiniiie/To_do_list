@@ -7,6 +7,8 @@ const useCreate = () => {
     const { handleSettingBtn } = useSetting();
     const [ value, setValue ] = useState<string>('');
     const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
+    const [ startDate, setStartDate ] = useState<Date | null>(new Date());
+    const [ endDate, setEndDate ] = useState<Date | null>(new Date());
 
     const handleModal = ( index: number ) => {
         if (index == 0) {
@@ -38,20 +40,23 @@ const useCreate = () => {
     };
 
     useEffect(() => {
-        console.log('체크 상황', checkedAllDay)
-    }, [checkedAllDay])
+    }, [checkedAllDay, startDate, endDate]);
 
 
 
     return {
         value,
         checkedAllDay,
+        startDate,
+        endDate,
         handleModal,
         clickBlackContaniner,
         prohibitClick,
         onChange,
         handleSubmit,
-        checkboxOnChange
+        checkboxOnChange,
+        setStartDate,
+        setEndDate
     }
 }
 
