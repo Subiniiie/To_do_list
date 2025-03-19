@@ -1,5 +1,7 @@
 import { BoxWrapper } from "../styles/box";
 import { useList } from "../store/list";
+import { TodoNullWrapper } from "../styles/todoNull";
+import TodoItemContainer from "./TodoItemContainer";
 
 const TodoListContainer = () => {
     const { todos } = useList();
@@ -7,10 +9,12 @@ const TodoListContainer = () => {
     return (
         <BoxWrapper >
             {todos.length === 0 ? (
-                null
+                <TodoNullWrapper>
+                    할 일이 없습니다.
+                </TodoNullWrapper>
             ) : (
                 todos.map((todo) => (
-                    <p>{todo.title}</p>
+                    <TodoItemContainer todo={todo} />
                 ))
             )}
         </BoxWrapper>
