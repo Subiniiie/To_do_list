@@ -20,19 +20,19 @@ const Container = () => {
 
     return (
         <>
-        <ContainerWrapper lightMode={lightMode}>
-            <HeaderContainer>
-                <Title />
-                <BtnsContainer>
-                    <SettingBtn handleSettingBtn={handleSettingBtn} />
-                    <ToggleBtn />
-                </BtnsContainer>
-                {openSetting && <SettingOption />}
-            </HeaderContainer>
-            <SubTitle />
-            <Input />
-            <TodoListContainer />
-        </ContainerWrapper>
+            <ContainerWrapper lightMode={lightMode}>
+                <HeaderContainer>
+                    <Title />
+                    <BtnsContainer>
+                        <SettingBtn handleSettingBtn={handleSettingBtn} />
+                        <ToggleBtn />
+                    </BtnsContainer>
+                    {openSetting && <SettingOption />}
+                </HeaderContainer>
+                <SubTitle />
+                <Input />
+                <TodoListContainer />
+            </ContainerWrapper>
             {open && <BlackBackground />}
         </>
     )
