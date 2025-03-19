@@ -1,9 +1,9 @@
-export interface type {
+export interface theme {
     lightMode: boolean;
     setLightMode: () => void;
 };
 
-interface Todo {
+export interface Todo {
     id: number;
     title: string;
     startDate: Date | null;
