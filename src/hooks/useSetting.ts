@@ -8,7 +8,6 @@ const useSetting = () => {
     };
 
     useEffect(() => {
-        console.log("changed", openSetting)
     }, [openSetting]);
 
     return {

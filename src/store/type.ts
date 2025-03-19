@@ -6,12 +6,13 @@ export interface type {
 interface Todo {
     id: number;
     title: string;
-    date: Date;
+    startDate: Date | null;
+    endDate: Date | null;
 };
 
 export interface ListType {
     todos: Todo[];
-    setTodos: (title: string, date: Date) => void;
+    setTodos: (title: string, startDate: Date | null, endDate: Date | null) => void;
 };
 
 export interface Content {

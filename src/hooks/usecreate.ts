@@ -1,10 +1,12 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
 import { useOpen } from "../store/content";
 import useSetting from "./useSetting";
+import { useList } from "../store/list";
 
 const useCreate = () => {
     const { setOpen } = useOpen();
     const { handleSettingBtn } = useSetting();
+    const { setTodos } = useList();
     const [ value, setValue ] = useState<string>('');
     const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
@@ -30,6 +32,7 @@ const useCreate = () => {
     };
 
     const handleSubmit = () => {
+        setTodos(value, startDate, endDate);
         setValue('');
         setOpen();
     };
@@ -37,6 +40,7 @@ const useCreate = () => {
     const checkboxOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         setCheckedAllDay((checkedAllDay) => !checkedAllDay);
     };
+
 
     useEffect(() => {
         if (checkedAllDay) {
@@ -59,7 +63,7 @@ const useCreate = () => {
         handleSubmit,
         checkboxOnChange,
         setStartDate,
-        setEndDate
+        setEndDate,
     }
 }
 
