@@ -10,7 +10,7 @@ import InputDate from "./InputDate";
 
 const ContentContainer = () => {
     const { lightMode } = useLightMode();
-    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, value, checkedAllDay } = useCreate();
+    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, setStartDate, setEndDate, value, checkedAllDay, startDate, endDate } = useCreate();
     const dateIndex = ['start', 'end'];
 
     return (
@@ -24,7 +24,11 @@ const ContentContainer = () => {
                 onChange={onChange}
             />
             {dateIndex.map((t, i) => 
-                <InputDate key={i} t={t} />
+                <InputDate 
+                    key={i} 
+                    date={t == "start" ? startDate : endDate}
+                    setDate={t == "start" ? setStartDate : setEndDate}
+                />
             )}
             <CheckedBoxWrapper
                 checked={checkedAllDay}

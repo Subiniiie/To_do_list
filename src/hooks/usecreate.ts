@@ -27,7 +27,6 @@ const useCreate = () => {
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
-        console.log(e.target.value);
     };
 
     const handleSubmit = () => {
@@ -42,12 +41,10 @@ const useCreate = () => {
     useEffect(() => {
         if (checkedAllDay) {
             setEndDate(startDate);
-            console.log('끝나랒', endDate)
         }
     }, [checkedAllDay, startDate]);
 
     useEffect(() => {
-        console.log('끝 날짜', endDate)
     }, [endDate]);
 
     return {
