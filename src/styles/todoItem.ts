@@ -6,6 +6,7 @@ export const TodoItemWrapper = styled.div<{ lightMode: boolean }>`
     height: 70px;
     background: ${({ lightMode }) => (lightMode ? color.lmArticle : color.dmArticle )};
     font-family: 'Cafe24Ohsquare';
+    color: ${({ lightMode }) => (lightMode ? color.lmTitle : color.dmTitle )};
     border-radius: 15px;
     margin: 5px 0;
     cursor: pointer;

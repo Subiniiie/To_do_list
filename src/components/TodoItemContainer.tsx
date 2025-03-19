@@ -1,6 +1,8 @@
 import { TodoItemWrapper } from "../styles/todoItem";
 import { Todo } from "../store/type";
 import { useLightMode } from "../store/mode";
+import { TodoTitleWrapper } from "../styles/todoTitle";
+import { TodoDateWrapper } from "../styles/TodoDate";
 
 interface TodoItemContainerProps {
     todo: Todo;
@@ -11,9 +13,13 @@ const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
 
     return (
         <TodoItemWrapper lightMode={lightMode}>
-            {todo.title}
-            {todo.startDate?.toLocaleDateString()}
-            {todo.endDate?.toLocaleDateString()}
+            <TodoTitleWrapper>
+                {todo.title}
+            </TodoTitleWrapper>  
+            <TodoDateWrapper>
+                {todo.startDate?.toLocaleDateString()}
+                {todo.endDate?.toLocaleDateString()}
+            </TodoDateWrapper> 
         </TodoItemWrapper>
     )
 }
