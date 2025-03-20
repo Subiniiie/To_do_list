@@ -13,8 +13,11 @@ const TodoListContainer = () => {
                     할 일이 없습니다.
                 </TodoNullWrapper>
             ) : (
-                todos.map((todo) => (
-                    <TodoItemContainer todo={todo} />
+                todos.map((todo, i) => (
+                    <TodoItemContainer 
+                        todo={todo} 
+                        key={i}
+                    />
                 ))
             )}
         </BoxWrapper>

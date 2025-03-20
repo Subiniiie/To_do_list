@@ -5,6 +5,7 @@ import { TodoTitleWrapper } from "../styles/todoTitle";
 import { TodoDateWrapper } from "../styles/TodoDate";
 import { useList } from "../store/list";
 import { ChoiceBtnWrapper } from "../styles/choiceBtn";
+import useItem from "../hooks/useItem";
 
 interface TodoItemContainerProps {
     todo: Todo;
@@ -13,9 +14,13 @@ interface TodoItemContainerProps {
 const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
     const { lightMode } = useLightMode();
     const { choice } = useList();
+    const { choiceItem } = useItem();
 
     return (
-        <TodoItemWrapper lightMode={lightMode}>
+        <TodoItemWrapper 
+            lightMode={lightMode}
+            onClick={() => choiceItem(todo.id)}
+        >
             <TodoTitleWrapper>
                 {todo.title}
             </TodoTitleWrapper>  

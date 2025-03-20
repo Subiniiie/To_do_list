@@ -12,11 +12,16 @@ import SettingOption from "./SettingOption";
 import { useOpen } from "../store/content";
 import BlackBackground from "./BlackContainer";
 import TodoListContainer from "./TodoListContainer";
+import { useList } from "../store/list";
+import { DeleteBtnWrapper } from "../styles/deleteBtn";
+import useItem from "../hooks/useItem";
 
 const Container = () => {
     const { lightMode } = useLightMode();
     const { openSetting, handleSettingBtn } = useSetting();
     const { open } = useOpen();
+    const { choice } = useList();
+    const { deleteItem } = useItem();
 
     return (
         <>
@@ -32,6 +37,11 @@ const Container = () => {
                 <SubTitle />
                 <Input />
                 <TodoListContainer />
+                {choice && 
+                    <DeleteBtnWrapper onClick={deleteItem}>
+                        삭제
+                    </DeleteBtnWrapper>
+                }
             </ContainerWrapper>
             {open && <BlackBackground />}
         </>

@@ -15,6 +15,9 @@ export interface ListType {
     setTodos: (title: string, startDate: Date | null, endDate: Date | null) => void;
     choice: boolean;
     setChoice: () => void;
+    selectedTodos: number[];
+    toggleSelectedTodo: (id: number) => void;
+    deleteSelectedTodos: () => void;
 };
 
 export interface Content {
