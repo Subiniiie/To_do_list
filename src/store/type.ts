@@ -13,6 +13,8 @@ export interface Todo {
 export interface ListType {
     todos: Todo[];
     setTodos: (title: string, startDate: Date | null, endDate: Date | null) => void;
+    choice: boolean;
+    setChoice: () => void;
 };
 
 export interface Content {

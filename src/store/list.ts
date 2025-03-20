@@ -6,4 +6,6 @@ export const useList = create<ListType>((set) => ({
     setTodos : (title: string, startDate: Date | null, endDate: Date | null) => set((state) => ({
         todos: [...state.todos, { id: state.todos.length + 1, title, startDate, endDate}]
     })),
+    choice: false,
+    setChoice: () => set((state) => ({ choice: !state.choice })),
 }));

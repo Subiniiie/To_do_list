@@ -3,6 +3,8 @@ import { Todo } from "../store/type";
 import { useLightMode } from "../store/mode";
 import { TodoTitleWrapper } from "../styles/todoTitle";
 import { TodoDateWrapper } from "../styles/TodoDate";
+import { useList } from "../store/list";
+import { ChoiceBtnWrapper } from "../styles/choiceBtn";
 
 interface TodoItemContainerProps {
     todo: Todo;
@@ -10,6 +12,7 @@ interface TodoItemContainerProps {
 
 const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
     const { lightMode } = useLightMode();
+    const { choice } = useList();
 
     return (
         <TodoItemWrapper lightMode={lightMode}>
@@ -19,7 +22,8 @@ const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
             <TodoDateWrapper>
                 {todo.startDate?.toLocaleDateString()}
                 {todo.endDate?.toLocaleDateString()}
-            </TodoDateWrapper> 
+            </TodoDateWrapper>
+            {choice && <ChoiceBtnWrapper />}
         </TodoItemWrapper>
     )
 }

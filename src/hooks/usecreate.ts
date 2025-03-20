@@ -2,11 +2,13 @@ import React, { ChangeEvent, useState, useEffect } from "react";
 import { useOpen } from "../store/content";
 import useSetting from "./useSetting";
 import { useList } from "../store/list";
+import useItem from "./useItem";
 
 const useCreate = () => {
     const { setOpen } = useOpen();
     const { handleSettingBtn } = useSetting();
     const { setTodos } = useList();
+    const { handleChoice } = useItem();
     const [ value, setValue ] = useState<string>('');
     const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
@@ -15,7 +17,9 @@ const useCreate = () => {
     const handleModal = ( index: number ) => {
         if (index == 0) {
             setOpen();
-        };
+        } else if (index == 1) {
+            handleChoice();
+        }
     };
 
     const clickBlackContaniner = () => {
