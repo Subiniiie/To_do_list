@@ -13,12 +13,14 @@ interface TodoItemContainerProps {
 
 const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
     const { lightMode } = useLightMode();
-    const { choice } = useList();
+    const { choice, selectedTodos } = useList();
     const { choiceItem } = useItem();
+    const isSelected = selectedTodos.includes(todo.id);
 
     return (
         <TodoItemWrapper 
             lightMode={lightMode}
+            isSelected={isSelected}
             onClick={() => choiceItem(todo.id)}
         >
             <TodoTitleWrapper>
@@ -28,7 +30,7 @@ const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
                 {todo.startDate?.toLocaleDateString()}
                 {todo.endDate?.toLocaleDateString()}
             </TodoDateWrapper>
-            {choice && <ChoiceBtnWrapper />}
+            {choice && <ChoiceBtnWrapper lightMode={lightMode} isSelected={isSelected}/>} 
         </TodoItemWrapper>
     )
 }
