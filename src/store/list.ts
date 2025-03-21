@@ -18,4 +18,26 @@ export const useList = create<ListType>((set) => ({
         todos: state.todos.filter(todo => !state.selectedTodos.includes(todo.id)),
         selectedTodos: []
     })),
+    sortType: "createAsc",
+    setSortType: (sortType) => set({ sortType }),
+    getSortedTodos: () => 
+        set((state) => {
+            let sortedTodos = [...state.todos];
+
+            switch (state.sortType) {
+                case "createAsc":
+                    sortedTodos.sort((a, b) => a.id - b.id);
+                    break;
+                case "startDateAsc":
+                    sortedTodos.sort((a, b) => (a.startDate?.getTime() || 0) - (b.startDate?.getTime() || 0));
+                    break;
+                case "startDateDesc":
+                    sortedTodos.sort((a, b) => (b.startDate?.getTime() || 0) - (a.startDate?.getTime() || 0));
+                    break;
+                default:
+                    break;
+            }
+            return { todos: sortedTodos};
+        }),
+
 }));

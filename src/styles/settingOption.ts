@@ -14,5 +14,6 @@ export const SettingOptionWrapper = styled.div<{ lightMode: boolean }>`
     border-radius: 30px;
     color: red;
     justify-content: space-around;
+    cursor: pointer;
     z-index: 100;
 `

@@ -18,6 +18,9 @@ export interface ListType {
     selectedTodos: number[];
     toggleSelectedTodo: (id: number) => void;
     deleteSelectedTodos: () => void;
+    sortType: "createAsc" | "startDateDesc" | "startDateAsc";
+    setSortType: (sortType: "createAsc" | "startDateDesc" | "startDateAsc") => void;
+    getSortedTodos: () => void;
 };
 
 export interface Content {

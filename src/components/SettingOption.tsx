@@ -37,7 +37,12 @@ const SettingOption = () => {
                     <SettingLineWrapper lightMode = {lightMode} />
                 </SettingOptionContainer>
             )}
-            <SettingTitleWrapper lightMode = {lightMode}>가장 오래된 순</SettingTitleWrapper>
+            <SettingTitleWrapper 
+                lightMode = {lightMode} 
+                onClick={() => handleModal(4)}
+            >
+                가장 오래된 순
+            </SettingTitleWrapper>
         </SettingOptionWrapper>
     )
 }

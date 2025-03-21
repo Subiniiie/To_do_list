@@ -1,7 +1,7 @@
 import { useList } from "../store/list";
 
 const useItem = () => {
-    const { setChoice, toggleSelectedTodo, deleteSelectedTodos } = useList();
+    const { setChoice, toggleSelectedTodo, deleteSelectedTodos, setSortType, getSortedTodos } = useList();
 
     const handleChoice = () => {
         setChoice();
@@ -16,10 +16,16 @@ const useItem = () => {
         setChoice();
     }
 
+    const handleSort = (type: "createAsc" | "startDateDesc" | "startDateAsc") => {
+        setSortType(type);
+        getSortedTodos();
+    }
+
     return {
         handleChoice,
         choiceItem,
-        deleteItem
+        deleteItem,
+        handleSort
     }
 }
 

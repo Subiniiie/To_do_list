@@ -8,7 +8,7 @@ const useCreate = () => {
     const { setOpen } = useOpen();
     const { handleSettingBtn } = useSetting();
     const { setTodos } = useList();
-    const { handleChoice } = useItem();
+    const { handleChoice, handleSort } = useItem();
     const [ value, setValue ] = useState<string>('');
     const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
@@ -19,6 +19,12 @@ const useCreate = () => {
             setOpen();
         } else if (index == 1) {
             handleChoice();
+        } else if (index == 2) {
+            handleSort("createAsc");
+        } else if (index == 3) {
+            handleSort("startDateAsc");
+        } else {
+            handleSort("startDateDesc");
         }
     };
 
