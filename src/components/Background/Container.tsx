@@ -24,7 +24,7 @@ const Container = () => {
     const { lightMode } = useLightMode();
     const { handleSettingBtn } = useSetting();
     const { open } = useOpen();
-    const { choice, filteredTodos } = useList();
+    const { choice } = useList();
     const { deleteItem, clickCancleBtn } = useItem();
     const { openSetting } = useSettingStore();
 

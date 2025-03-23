@@ -4,6 +4,10 @@ import { color } from "../../store/color";
 export const TodoItemWrapper = styled.div<{ lightMode: boolean; isSelected: boolean }>`
     width: 100%;
     height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     background: ${({ lightMode, isSelected }) => (lightMode ? (
                                                     isSelected ? color.lmChoice : color.lmArticle
                                                 ) : (

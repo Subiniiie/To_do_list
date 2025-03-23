@@ -1,11 +1,12 @@
-import { TodoItemWrapper } from "../../styles/Modal/todoItem";
+import { TodoItemWrapper } from "../../styles/Main/todoItem";
 import { Todo } from "../../store/type";
 import { useLightMode } from "../../store/mode";
-import { TodoTitleWrapper } from "../../styles/Modal/todoTitle";
-import { TodoDateWrapper } from "../../styles/Modal/TodoDate";
+import { TodoTitleWrapper } from "../../styles/Main/todoTitle";
+import { TodoDateWrapper } from "../../styles/Main/TodoDate";
 import { useList } from "../../store/list";
 import { ChoiceBtnWrapper } from "../../styles/Main/choiceBtn";
 import useItem from "../../hooks/Main/useItem";
+import { TodoBoxWrapper } from "../../styles/Main/todoBox";
 
 interface TodoItemContainerProps {
     todo: Todo;
@@ -23,13 +24,14 @@ const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
             isSelected={isSelected}
             onClick={() => choice && choiceItem(todo.id)}
         >
-            <TodoTitleWrapper>
-                {todo.title}
-            </TodoTitleWrapper>  
-            <TodoDateWrapper>
-                {todo.startDate?.toLocaleDateString()}
-                {todo.endDate?.toLocaleDateString()}
-            </TodoDateWrapper>
+            <TodoBoxWrapper>
+                <TodoTitleWrapper>
+                    {todo.title}
+                </TodoTitleWrapper>  
+                <TodoDateWrapper>
+                    {todo.startDate?.toLocaleDateString()} - {todo.endDate?.toLocaleDateString()}
+                </TodoDateWrapper>
+            </TodoBoxWrapper>
             {choice && <ChoiceBtnWrapper lightMode={lightMode} isSelected={isSelected}/>} 
         </TodoItemWrapper>
     )
