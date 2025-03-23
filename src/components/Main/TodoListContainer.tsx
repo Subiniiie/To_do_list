@@ -4,7 +4,7 @@ import { TodoNullWrapper } from "../../styles/Main/todoNull";
 import TodoItemContainer from "./TodoItemContainer";
 
 const TodoListContainer = () => {
-    const { todos } = useList();
+    const { todos, filteredTodos } = useList();
 
     return (
         <BoxWrapper >
@@ -13,12 +13,18 @@ const TodoListContainer = () => {
                     할 일이 없습니다.
                 </TodoNullWrapper>
             ) : (
-                todos.map((todo, i) => (
-                    <TodoItemContainer 
-                        todo={todo} 
-                        key={i}
-                    />
-                ))
+             filteredTodos.length > 0 ? (
+                    filteredTodos.map((todo, i) => (
+                        <TodoItemContainer todo={todo} key={i} />
+                    ))
+                    ) : (
+                        todos.map((todo, i) => (
+                            <TodoItemContainer 
+                                todo={todo} 
+                                key={i}
+                            />
+                        ))
+                    )
             )}
         </BoxWrapper>
     )

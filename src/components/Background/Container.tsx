@@ -41,14 +41,7 @@ const Container = () => {
                 </HeaderContainer>
                 <SubTitle />
                 <Input />
-                { filteredTodos.length > 0 ? (
-                    filteredTodos.map((todo, i) => (
-                        <TodoItemContainer todo={todo} key={i} />
-                    ))
-                    ) : (
-                        <TodoListContainer />
-                    )
-                }
+                <TodoListContainer />
                 {choice && 
                     <ChoiceBtnContainer>
                         <DeleteBtnWrapper onClick={deleteItem}>
