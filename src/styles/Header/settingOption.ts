@@ -5,8 +5,8 @@ export const SettingOptionWrapper = styled.div<{ lightMode: boolean }>`
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 40px;
-    right: 100px;
+    top: 35px;
+    left: 400px;
     width: 150px;
     height: 150px;
     background-color:  ${({ lightMode }) => lightMode ? color.lmSettingOption : color.dmSettingOption };
