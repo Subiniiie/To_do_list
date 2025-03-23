@@ -1,0 +1,48 @@
+import { ContentWrapper } from "../../styles/Modal/content"
+import { useLightMode } from "../../store/mode";
+import useCreate from "../../hooks/Modal/usecreate";
+import { ContentTitleWrapper } from "../../styles/Modal/contentTitle";
+import { ContentInputWrapper } from "../../styles/Modal/contentInput";
+import { CreateBtnWrapper } from "../../styles/Modal/createBtn";
+import { CheckedBoxWrapper } from "../../styles/Modal/checkedBox";
+import { CheckedBoxTitleWrapper } from "../../styles/Modal/checkedBoxTitle";
+import InputDate from "./InputDate";
+
+const ContentContainer = () => {
+    const { lightMode } = useLightMode();
+    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, setStartDate, setEndDate, value, checkedAllDay, startDate, endDate } = useCreate();
+    const dateIndex = ['start', 'end'];
+
+    return (
+        <ContentWrapper lightMode={lightMode} onClick={prohibitClick}>
+            <ContentTitleWrapper lightMode={lightMode}>
+                새로운 목록을 생성합니다.
+            </ContentTitleWrapper>
+            <ContentInputWrapper 
+                placeholder="내용" 
+                value={value}
+                onChange={onChange}
+            />
+            {dateIndex.map((t, i) => 
+                <InputDate 
+                    key={i} 
+                    date={t == "start" ? startDate : endDate}
+                    setDate={t == "start" ? setStartDate : setEndDate}
+                />
+            )}
+            <CheckedBoxWrapper
+                checked={checkedAllDay}
+                onChange={checkboxOnChange}
+            />
+            <CheckedBoxTitleWrapper lightMode={lightMode}>
+                당일만
+            </CheckedBoxTitleWrapper>
+            <CreateBtnWrapper onClick={handleSubmit}>
+                완료
+            </CreateBtnWrapper>
+        </ContentWrapper>
+    )
+
+}
+
+export default ContentContainer;

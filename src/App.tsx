@@ -1,5 +1,5 @@
-import { BackgroundWrapper } from "./styles/backgroundImage";
-import Container from "./components/Container";
+import { BackgroundWrapper } from "./styles/Background/backgroundImage";
+import Container from "./components/Background/Container";
 import "./App.css";
 
 function App() {
