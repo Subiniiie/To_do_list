@@ -5,4 +5,5 @@ export const CheckedBoxTitleWrapper = styled.p<{ lightMode: boolean }>`
     font-size: 14px;
     font-family: 'Cafe24Ohsquare';
     color: ${({ lightMode }) => (lightMode ? color.lmTitle : color.dmTitle )};
+    margin-top: 15px;
 `

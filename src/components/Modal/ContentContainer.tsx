@@ -7,10 +7,14 @@ import { CreateBtnWrapper } from "../../styles/Modal/createBtn";
 import { CheckedBoxWrapper } from "../../styles/Modal/checkedBox";
 import { CheckedBoxTitleWrapper } from "../../styles/Modal/checkedBoxTitle";
 import InputDate from "./InputDate";
+import { DateCheckWrapper } from "../../styles/Modal/dateCheck";
+import { DateWrapper } from "../../styles/Modal/dateBox";
+import { DeleteBtnWrapper } from "../../styles/Modal/deleteBtn";
+import { ModalBtnsWrapper } from "../../styles/Modal/modalBtns";
 
 const ContentContainer = () => {
     const { lightMode } = useLightMode();
-    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, setStartDate, setEndDate, value, checkedAllDay, startDate, endDate } = useCreate();
+    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, setStartDate, setEndDate, ClickCancel, value, checkedAllDay, startDate, endDate } = useCreate();
     const dateIndex = ['start', 'end'];
 
     return (
@@ -23,23 +27,32 @@ const ContentContainer = () => {
                 value={value}
                 onChange={onChange}
             />
-            {dateIndex.map((t, i) => 
-                <InputDate 
-                    key={i} 
-                    date={t == "start" ? startDate : endDate}
-                    setDate={t == "start" ? setStartDate : setEndDate}
+            <DateCheckWrapper>
+                <DateWrapper>
+                    {dateIndex.map((t, i) => 
+                        <InputDate 
+                            key={i} 
+                            date={t == "start" ? startDate : endDate}
+                            setDate={t == "start" ? setStartDate : setEndDate}
+                        />
+                    )}
+                </DateWrapper>
+                <CheckedBoxWrapper
+                    checked={checkedAllDay}
+                    onChange={checkboxOnChange}
                 />
-            )}
-            <CheckedBoxWrapper
-                checked={checkedAllDay}
-                onChange={checkboxOnChange}
-            />
-            <CheckedBoxTitleWrapper lightMode={lightMode}>
-                당일만
-            </CheckedBoxTitleWrapper>
-            <CreateBtnWrapper onClick={handleSubmit}>
-                완료
-            </CreateBtnWrapper>
+                <CheckedBoxTitleWrapper lightMode={lightMode}>
+                    당일만
+                </CheckedBoxTitleWrapper>
+            </DateCheckWrapper>
+            <ModalBtnsWrapper>
+                <CreateBtnWrapper onClick={handleSubmit}>
+                    완료
+                </CreateBtnWrapper>
+                <DeleteBtnWrapper onClick={ClickCancel}>
+                    취소
+                </DeleteBtnWrapper>
+            </ModalBtnsWrapper>
         </ContentWrapper>
     )
 

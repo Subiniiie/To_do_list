@@ -55,6 +55,10 @@ const useCreate = () => {
         setCheckedAllDay((checkedAllDay) => !checkedAllDay);
     };
 
+    const ClickCancel = () => {
+        setOpen();
+    };
+
 
     useEffect(() => {
         if (checkedAllDay) {
@@ -78,6 +82,7 @@ const useCreate = () => {
         checkboxOnChange,
         setStartDate,
         setEndDate,
+        ClickCancel
     }
 }
 

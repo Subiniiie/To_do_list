@@ -7,4 +7,5 @@ export const ContentInputWrapper = styled.input.attrs({ type: "text" })`
     border-radius: 5px;
     border: none;
     background-color: ${color.modalInput};
+    margin: 5px 0 0 30px;
 `
