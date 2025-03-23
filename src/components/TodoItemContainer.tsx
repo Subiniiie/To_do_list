@@ -21,7 +21,7 @@ const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
         <TodoItemWrapper 
             lightMode={lightMode}
             isSelected={isSelected}
-            onClick={() => choiceItem(todo.id)}
+            onClick={() => choice && choiceItem(todo.id)}
         >
             <TodoTitleWrapper>
                 {todo.title}
