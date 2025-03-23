@@ -15,13 +15,15 @@ import TodoListContainer from "./TodoListContainer";
 import { useList } from "../store/list";
 import { DeleteBtnWrapper } from "../styles/deleteBtn";
 import useItem from "../hooks/useItem";
+import TodoItemContainer from "./TodoItemContainer";
 
 const Container = () => {
     const { lightMode } = useLightMode();
     const { openSetting, handleSettingBtn } = useSetting();
     const { open } = useOpen();
-    const { choice } = useList();
+    const { choice, filteredTodos } = useList();
     const { deleteItem } = useItem();
+
 
     return (
         <>
@@ -36,7 +38,14 @@ const Container = () => {
                 </HeaderContainer>
                 <SubTitle />
                 <Input />
-                <TodoListContainer />
+                { filteredTodos.length > 0 ? (
+                    filteredTodos.map((todo, i) => (
+                        <TodoItemContainer todo={todo} key={i} />
+                    ))
+                    ) : (
+                        <TodoListContainer />
+                    )
+                }
                 {choice && 
                     <DeleteBtnWrapper onClick={deleteItem}>
                         삭제

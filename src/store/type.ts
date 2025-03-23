@@ -21,6 +21,8 @@ export interface ListType {
     sortType: "createAsc" | "startDateDesc" | "startDateAsc";
     setSortType: (sortType: "createAsc" | "startDateDesc" | "startDateAsc") => void;
     getSortedTodos: () => void;
+    filteredTodos: Todo[];
+    setFilteredTodos: (searchText: string) => void;
 };
 
 export interface Content {

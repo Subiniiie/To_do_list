@@ -39,5 +39,12 @@ export const useList = create<ListType>((set) => ({
             }
             return { todos: sortedTodos};
         }),
-
+        filteredTodos : [],
+        setFilteredTodos: (searchText) => {
+            set((state) => ({
+                filteredTodos: state.todos.filter((todo) => 
+                todo.title.toLowerCase().includes(searchText.toLowerCase())
+            ),
+            }));
+        },
 }));
