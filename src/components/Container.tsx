@@ -16,13 +16,15 @@ import { useList } from "../store/list";
 import { DeleteBtnWrapper } from "../styles/deleteBtn";
 import useItem from "../hooks/useItem";
 import TodoItemContainer from "./TodoItemContainer";
+import { CancelBtnWrapper } from "../styles/cancelBtn";
+import { ChoiceBtnContainer } from "../styles/chioceBtns";
 
 const Container = () => {
     const { lightMode } = useLightMode();
     const { openSetting, handleSettingBtn } = useSetting();
     const { open } = useOpen();
     const { choice, filteredTodos } = useList();
-    const { deleteItem } = useItem();
+    const { deleteItem, clickCancleBtn } = useItem();
 
 
     return (
@@ -47,9 +49,14 @@ const Container = () => {
                     )
                 }
                 {choice && 
-                    <DeleteBtnWrapper onClick={deleteItem}>
-                        삭제
-                    </DeleteBtnWrapper>
+                    <ChoiceBtnContainer>
+                        <DeleteBtnWrapper onClick={deleteItem}>
+                            삭제
+                        </DeleteBtnWrapper>
+                        <CancelBtnWrapper onClick={clickCancleBtn}>
+                            취소
+                        </CancelBtnWrapper>
+                    </ChoiceBtnContainer>
                 }
             </ContainerWrapper>
             {open && <BlackBackground />}

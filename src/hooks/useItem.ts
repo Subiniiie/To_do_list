@@ -9,23 +9,28 @@ const useItem = () => {
 
     const choiceItem = (id: number) => {
         toggleSelectedTodo(id);
-    }
+    };
 
     const deleteItem = () => {
         deleteSelectedTodos();
         setChoice();
-    }
+    };
 
     const handleSort = (type: "createAsc" | "startDateDesc" | "startDateAsc") => {
         setSortType(type);
         getSortedTodos();
+    };
+
+    const clickCancleBtn = () => {
+        setChoice();
     }
 
     return {
         handleChoice,
         choiceItem,
         deleteItem,
-        handleSort
+        handleSort,
+        clickCancleBtn
     }
 }
 
