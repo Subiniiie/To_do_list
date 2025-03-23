@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react";
+import { useSettingStore } from "../store/setting";
 
 const useSetting = () => {
-    const [ openSetting, setOpenSetting ] = useState<boolean>(false);
+    const { setOpenSetting } = useSettingStore();
 
     const handleSettingBtn = () => {
-        setOpenSetting((openSetting) => !openSetting);
+        setOpenSetting();
     };
 
-    useEffect(() => {
-    }, [openSetting]);
-
     return {
-        openSetting,
         handleSettingBtn
     }
 }

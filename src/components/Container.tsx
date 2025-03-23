@@ -18,14 +18,15 @@ import useItem from "../hooks/useItem";
 import TodoItemContainer from "./TodoItemContainer";
 import { CancelBtnWrapper } from "../styles/cancelBtn";
 import { ChoiceBtnContainer } from "../styles/chioceBtns";
+import { useSettingStore } from "../store/setting";
 
 const Container = () => {
     const { lightMode } = useLightMode();
-    const { openSetting, handleSettingBtn } = useSetting();
+    const { handleSettingBtn } = useSetting();
     const { open } = useOpen();
     const { choice, filteredTodos } = useList();
     const { deleteItem, clickCancleBtn } = useItem();
-
+    const { openSetting } = useSettingStore();
 
     return (
         <>

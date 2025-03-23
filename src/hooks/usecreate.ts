@@ -3,12 +3,14 @@ import { useOpen } from "../store/content";
 import useSetting from "./useSetting";
 import { useList } from "../store/list";
 import useItem from "./useItem";
+import { useSettingStore } from "../store/setting";
 
 const useCreate = () => {
     const { setOpen } = useOpen();
     const { handleSettingBtn } = useSetting();
     const { setTodos } = useList();
     const { handleChoice, handleSort } = useItem();
+    const { setOpenSetting } = useSettingStore();
     const [ value, setValue ] = useState<string>('');
     const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
@@ -17,8 +19,10 @@ const useCreate = () => {
     const handleModal = ( index: number ) => {
         if (index == 0) {
             setOpen();
+            setOpenSetting();
         } else if (index == 1) {
             handleChoice();
+            setOpenSetting();
         } else if (index == 2) {
             handleSort("createAsc");
         } else if (index == 3) {

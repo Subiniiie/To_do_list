@@ -3,6 +3,11 @@ export interface theme {
     setLightMode: () => void;
 };
 
+export interface setting {
+    openSetting: boolean;
+    setOpenSetting: () => void;
+};
+
 export interface Todo {
     id: number;
     title: string;
