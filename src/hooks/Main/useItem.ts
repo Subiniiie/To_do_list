@@ -6,7 +6,7 @@ const useItem = () => {
 
     const triggerNotif = useNotification("게시물 삭제 완료", {
         body: "게시물이 삭제 되었습니다."
-    })
+    });
 
     const handleChoice = () => {
         setChoice();
@@ -29,14 +29,15 @@ const useItem = () => {
 
     const clickCancleBtn = () => {
         setChoice();
-    }
+    };
+
 
     return {
         handleChoice,
         choiceItem,
         deleteItem,
         handleSort,
-        clickCancleBtn
+        clickCancleBtn,
     }
 }
 
