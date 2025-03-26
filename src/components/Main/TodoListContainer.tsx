@@ -9,7 +9,6 @@ const TodoListContainer = () => {
     const { todos, filteredTodos } = useList();
     const { ref } = useScroll();
 
-
     return (
         <BoxWrapper ref={ref}>
             {todos.length === 0 ? (
