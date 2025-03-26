@@ -5,6 +5,7 @@ import { useList } from "../../store/list";
 import useItem from "../Main/useItem";
 import { useSettingStore } from "../../store/setting";
 import useNotification from "../Common/useNotification";
+import usePreventLeave from "../Common/usePreventLeave";
 
 const useCreate = () => {
     const { setOpen } = useOpen();
@@ -12,6 +13,7 @@ const useCreate = () => {
     const { setTodos } = useList();
     const { handleChoice, handleSort } = useItem();
     const { setOpenSetting } = useSettingStore();
+    const { enablePrevent } = usePreventLeave();
     const [ value, setValue ] = useState<string>('');
     const [ checkedAllDay, setCheckedAllDay ] = useState<boolean>(false);
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
@@ -25,6 +27,7 @@ const useCreate = () => {
         if (index == 0) {
             setOpen();
             setOpenSetting();
+            enablePrevent();
         } else if (index == 1) {
             handleChoice();
             setOpenSetting();
