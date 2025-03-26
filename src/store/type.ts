@@ -34,3 +34,7 @@ export interface Content {
     open: boolean;
     setOpen : () => void;
 }
+
+export interface NotificationOptions {
+    body?: string;
+}

@@ -4,6 +4,7 @@ import useSetting from "../Header/useSetting";
 import { useList } from "../../store/list";
 import useItem from "../Main/useItem";
 import { useSettingStore } from "../../store/setting";
+import useNotification from "../Common/useNotification";
 
 const useCreate = () => {
     const { setOpen } = useOpen();
@@ -16,6 +17,9 @@ const useCreate = () => {
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
     const [ endDate, setEndDate ] = useState<Date | null>(new Date());
 
+    const triggerNotif = useNotification("게시물 생성 완료", {
+        body: "게시물 생성이 완료되었습니다."
+    });
 
     const handleModal = useCallback(( index: number ) => {
         if (index == 0) {
@@ -50,6 +54,7 @@ const useCreate = () => {
         setTodos(value, startDate, endDate);
         setValue('');
         setOpen();
+        triggerNotif();
     };
 
     const checkboxOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -84,7 +89,7 @@ const useCreate = () => {
         checkboxOnChange,
         setStartDate,
         setEndDate,
-        ClickCancel
+        ClickCancel,
     }
 }
 

@@ -9,9 +9,7 @@ const useHover = () => {
 
     useEffect(() => {
         const element = ref.current;
-        console.log('호버함')
         if (element) {
-            console.log('호버했음')
             element.addEventListener("mouseover", handleMouseOver);
             element.addEventListener("mouseout", handleMouseOut);
         }
