@@ -17,10 +17,9 @@ const useScroll = () => {
                 const scrollPosition = ref.current.scrollTop;
                 setScrollY(scrollPosition);
 
-                console.log('scrollY는', scrollY)
             };
         };
-
+        
         const container = ref.current;
         if (container) {
             container.addEventListener("scroll", handleScroll);
@@ -34,10 +33,12 @@ const useScroll = () => {
     }, []);
 
     useEffect(() => {
-        if (ref.current && scrollY >= ref.current.scrollHeight - ref.current.clientHeight - 5 && !notifTriggered.current) {
+        if (scrollY !== 0 && ref.current && Math.ceil(scrollY) === ref.current.scrollHeight - ref.current.clientHeight && !notifTriggered.current) {
             triggerLastItemNotif();
             notifTriggered.current = true;
-        };
+        } else {
+            notifTriggered.current = false;
+        }
     }, [scrollY, triggerLastItemNotif])
 
     return {
