@@ -14,7 +14,7 @@ import { ModalBtnsWrapper } from "../../styles/Modal/modalBtns";
 
 const ContentContainer = () => {
     const { lightMode } = useLightMode();
-    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, setStartDate, setEndDate, ClickCancel, value, checkedAllDay, startDate, endDate } = useCreate();
+    const { prohibitClick, onChange, handleSubmit, checkboxOnChange, setStartDate, setEndDate, clickCancel, value, checkedAllDay, startDate, endDate } = useCreate();
     const dateIndex = ['start', 'end'];
 
     return (
@@ -49,7 +49,7 @@ const ContentContainer = () => {
                 <CreateBtnWrapper onClick={handleSubmit}>
                     완료
                 </CreateBtnWrapper>
-                <DeleteBtnWrapper onClick={ClickCancel}>
+                <DeleteBtnWrapper onClick={clickCancel}>
                     취소
                 </DeleteBtnWrapper>
             </ModalBtnsWrapper>

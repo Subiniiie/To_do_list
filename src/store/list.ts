@@ -14,6 +14,7 @@ export const useList = create<ListType>((set) => ({
         ? state.selectedTodos.filter(todoId => todoId != id)
         : [...state.selectedTodos, id]
     })),
+    clearSelectedTodos: () => set(() => ({ selectedTodos: [] })),
     deleteSelectedTodos: () => set((state) => ({
         todos: state.todos.filter(todo => !state.selectedTodos.includes(todo.id)),
         selectedTodos: []
