@@ -15,7 +15,6 @@ import TodoListContainer from "../Main/TodoListContainer";
 import { useList } from "../../store/list";
 import { DeleteBtnWrapper } from "../../styles/Modal/deleteBtn";
 import useItem from "../../hooks/Main/useItem";
-import TodoItemContainer from "../Main/TodoItemContainer";
 import { CancelBtnWrapper } from "../../styles/Main/cancelBtn";
 import { ChoiceBtnContainer } from "../../styles/Main/chioceBtns";
 import { useSettingStore } from "../../store/setting";

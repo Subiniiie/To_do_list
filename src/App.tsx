@@ -3,7 +3,6 @@ import Container from "./components/Background/Container";
 import "./App.css";
 
 function App() {
-
   return (
     <BackgroundWrapper>
       <Container />

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
+import React, { ChangeEvent, useState, useEffect, useCallback } from "react";
 import { useOpen } from "../../store/content";
 import useSetting from "../Header/useSetting";
 import { useList } from "../../store/list";
@@ -16,7 +16,8 @@ const useCreate = () => {
     const [ startDate, setStartDate ] = useState<Date | null>(new Date());
     const [ endDate, setEndDate ] = useState<Date | null>(new Date());
 
-    const handleModal = ( index: number ) => {
+
+    const handleModal = useCallback(( index: number ) => {
         if (index == 0) {
             setOpen();
             setOpenSetting();
@@ -30,7 +31,7 @@ const useCreate = () => {
         } else {
             handleSort("startDateDesc");
         }
-    };
+    }, [setOpen, setOpenSetting, handleChoice, handleSort]);
 
     const clickBlackContaniner = () => {
         handleModal(0);
@@ -68,6 +69,7 @@ const useCreate = () => {
 
     useEffect(() => {
     }, [endDate]);
+
 
     return {
         value,

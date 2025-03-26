@@ -7,6 +7,7 @@ import { useList } from "../../store/list";
 import { ChoiceBtnWrapper } from "../../styles/Main/choiceBtn";
 import useItem from "../../hooks/Main/useItem";
 import { TodoBoxWrapper } from "../../styles/Main/todoBox";
+import useHover from "../../hooks/Common/useHover";
 
 interface TodoItemContainerProps {
     todo: Todo;
@@ -17,12 +18,15 @@ const TodoItemContainer = ({todo}: TodoItemContainerProps) => {
     const { choice, selectedTodos } = useList();
     const { choiceItem } = useItem();
     const isSelected = selectedTodos.includes(todo.id);
+    const { ref, isHover } = useHover();
 
     return (
         <TodoItemWrapper 
             lightMode={lightMode}
             isSelected={isSelected}
             onClick={() => choice && choiceItem(todo.id)}
+            ref={ref}
+            isHover={isHover}
         >
             <TodoBoxWrapper>
                 <TodoTitleWrapper>
