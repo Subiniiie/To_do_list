@@ -18,6 +18,8 @@
 - 초기 설정은 라이트모드입니다.
 - 토글 버튼을 만들어 테마를 자유롭게 변경할 수 있습니다.
 ```
+store/mode.ts
+
 export const useLightMode = create<theme>((set) => ({
     lightMode: true,
     setLightMode: () => set((state) => ({ lightMode: !state.lightMode})),
@@ -29,7 +31,7 @@ export const useLightMode = create<theme>((set) => ({
 ### 2. 새 투두리스트 생성
 ![Image](https://github.com/user-attachments/assets/c0364d55-b45a-4465-a7af-64956bfaa2be)
 - 모달창을 열어 투두리스트를 생성할 수 있습니다.
-  - 옵션에서 새로 만들기 버튼을 클릭하여 모달창을 엽니다. Zustand로 모달창 상태를 관리합니다. open의 초기값을 false로 지정하고 새로 만들기 버튼을 클릭하면 setOpen을 통해 값이 true로 변경됩니다. 모달창을 닫을 땐 모달창을 제외한 화면의 다른 부분을 클릭하면 setOpen을 통해 open의 값이 false로 변경됩니다.
+  - 옵션에서 새로 만들기 버튼을 클릭하여 모달창을 엽니다. Zustand로 모달창 상태를 관리합니다. ***open의 초기값을 false로 지정하고 새로 만들기 버튼을 클릭하면 setOpen을 통해 값이 true로 변경***됩니다. 모달창을 닫을 땐 모달창을 제외한 화면의 다른 부분을 클릭하면 setOpen을 통해 open의 값이 false로 변경됩니다.
 ```
 hooks/Modal/usecreate.ts
 
@@ -59,41 +61,13 @@ const triggerNotif = useNotification("게시물 생성 완료", {
     body: "게시물 생성이 완료되었습니다."
 });
 ```
-```
-hooks/Common/useNorification.ts
-import { NotificationOptions } from "../../store/type";
-
-const useNotification = (title: string, options: NotificationOptions): (() => void) => {
-        if (!("Notification" in window)) {
-            return () => {};
-        }
-        
-        const fireNotif = (): void => {
-            if (Notification.permission !== "granted") {
-                Notification.requestPermission().then((permisson) => {
-                    if (permisson === "granted") {
-                        new Notification(title, options);
-                    } else {
-                        return;
-                    }
-                });
-            } else {
-                new Notification(title, options);
-            }
-        };
-
-        return fireNotif;
-}
-
-export default useNotification;
-```
 - 완료 버튼으로 생성
     - 완료 버튼을 누르면 Zustand로 관리하고 있는 ***Todos에 새 데이터가 저장***됩니다. value는 아무것도 입력되지 않은 값으로 초기화됩니다. setOpen을 통해 open이 false가 되어 모달창이 닫힙니다. ***useNotification***을 이용해 게시물 생성 완료 알람이 뜹니다.
  
 ### 3. 투두리스트 삭제
 ![Image](https://github.com/user-attachments/assets/31505613-7ac5-4965-a92e-1540c31a8303)
 - 삭제할 투두리스트를 선택한 뒤 삭제할 수 있습니다.
-- Todo 리스트에 있는 데이터를 map()을 이용하여 하나씩 보여줍니다. 
+- Todo 리스트에 있는 데이터를 ***map()을 이용하여 하나씩 보여***줍니다. 
 ```
 components/Main/TodoItemContainer.tsx
 
@@ -115,7 +89,7 @@ components/Main/TodoItemContainer.tsx
     {choice && <ChoiceBtnWrapper lightMode={lightMode} isSelected={isSelected}/>} 
 </TodoItemWrapper>
 ```
-- Zustand를 이용하여 선택한 목록을 SelectedTodos로 관리합니다. 한 목록을 클릭했을 때 그 리스트의 id가 selectedTodo에 있으면 isSelected는 false가 되고 selectedTodos에 없으면 isSelected는 true가 됩니다. styles/Main/todoItem.ts에 Props로 isSelected의 값을 전달하여 선택 당했을 때와 선택 당하지 않았을 때의 스타일을 지정합니다.
+- Zustand를 이용하여 ***선택한 목록을 SelectedTodos로 관리***합니다. 한 목록을 클릭했을 때 그 리스트의 id가 selectedTodo에 있으면 isSelected는 false가 되고 selectedTodos에 없으면 isSelected는 true가 됩니다. styles/Main/todoItem.ts에 Props로 isSelected의 값을 전달하여 선택 당했을 때와 선택 당하지 않았을 때의 스타일을 지정합니다.
 ```
 store/list.ts
 
@@ -124,6 +98,32 @@ deleteSelectedTodos: () => set((state) => ({
     selectedTodos: []
 })),
 ```
-- 삭제 버튼을 눌렀을 때 useConfirm을 이용하여 삭제할 건지 알람창을 통해 묻습니다.
+- 삭제 버튼을 눌렀을 때 ***useConfirm***을 이용하여 삭제할 건지 알람창을 통해 묻습니다.
   - 예를 클릭하면 deletedSelectedTodos를 통해 todos를 selectedTodos에 없는 id를 가진 데이터들로만 구성합니다. selectedTodos와 삭제가 완료되면 useNotification을 이용하여 게시물 삭제 완료 알람이 뜹니다. 선택 옵션을 벗어나 메인화면으로 돌아갑니다.
   - 알람창에서 아니요를 누르면 selectedTodos가 초기화되고 메인화면으로 돌아갑니다.
+
+### 4. 검색
+![Image](https://github.com/user-attachments/assets/72739cc5-30f7-47ee-90d3-20062ed77cd2)
+- 투두리스트를 검색할 수 있습니다.
+```
+components/Header/Input.tsx
+
+<InputWrapper 
+    placeholder="SEARCH"
+    value={value}
+    onChange={onChange}
+/>
+```
+- ***useInput***을 이용해 setValue로 value에 입력값이 저장했습니다. onChange로 실시간으로 변경되는 값을 볼 수 있게 했습니다.
+```
+store/list.ts
+filteredTodos : [],
+setFilteredTodos: (searchText) => {
+    set((state) => ({
+        filteredTodos: state.todos.filter((todo) => 
+        todo.title.toLowerCase().includes(searchText.toLowerCase())
+    ),
+    }));
+```
+- ***filter***를 이용해 todos에 있는 데이터들을 하나씩 보며 ***todo.title 안에 filter가 포함되어 있으면 setFilterTodos로 filterTodos에 데이터를 넣***었습니다. useEffect로 value와 setFillterdTodos의 값이 바뀌면 todos를 조사했습니다.
+    - ***filterTodos.length > 0을 충족하면 메인화면에 검색어가 포함된 투두리스트만*** 보여지게 했습니니다.
