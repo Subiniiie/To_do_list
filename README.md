@@ -127,3 +127,36 @@ setFilteredTodos: (searchText) => {
 ```
 - ***filter***를 이용해 todos에 있는 데이터들을 하나씩 보며 ***todo.title 안에 filter가 포함되어 있으면 setFilterTodos로 filterTodos에 데이터를 넣***었습니다. useEffect로 value와 setFillterdTodos의 값이 바뀌면 todos를 조사했습니다.
     - ***filterTodos.length > 0을 충족하면 메인화면에 검색어가 포함된 투두리스트만*** 보여지게 했습니니다.
+
+
+### 5. 정렬(생성 순/가장 최신 순/가장 오래된 순)
+![Image](https://github.com/user-attachments/assets/b139fe76-fc1c-46cd-ae86-f6a2dd0e9d3f)
+- 투두리스트를 생성 순/가장 최신 순/가장 오래된 순으로 정렬할 수 있습니다.   
+  - 각 옵션을 createAsc(생성 순),  startDateAsc(가장 최신 순),  startDateDesc(가장 오래된 순)로 타입을 지정합니다.  setSortType을 이용해 선택한 옵션을 sortType에 정의합니다.
+  ```
+  store/list.ts
+  
+  sortType: "createAsc",
+    setSortType: (sortType) => set({ sortType }),
+    getSortedTodos: () => 
+        set((state) => {
+            let sortedTodos = [...state.todos];
+
+            switch (state.sortType) {
+                case "createAsc":
+                    sortedTodos.sort((a, b) => a.id - b.id);
+                    break;
+                case "startDateAsc":
+                    sortedTodos.sort((a, b) => (a.startDate?.getTime() || 0) - (b.startDate?.getTime() || 0));
+                    break;
+                case "startDateDesc":
+                    sortedTodos.sort((a, b) => (b.startDate?.getTime() || 0) - (a.startDate?.getTime() || 0));
+                    break;
+                default:
+                    break;
+            }
+            return { todos: sortedTodos};
+        }),
+    ```
+  - ***Zustand의 set함수***와 ***switch문***을 활용하여 type이 변경될 때마다 todos에 있는 데이터들의 순서를 변경했습니다.
+  - ***sort()*** 를 활용해 타입이 createAsc일 땐 id의 값을 비교하여 id가 작은 순서대로 옵니다. 타입이 startDateAsc일 땐 시작 날짜를 기준으로 작은 값에서 큰 값을 뺍니다. 결과가 음수이면 순서를 유지하고 양수이면 순서가 변경됩니다. 타입이 startDateDesc일 땐 시작 날짜를 기준으로 큰 값에서 작은 값을 뺍니다. 결과가 양수이면 순서를 유지하고 음수이면 결과가 바뀝니다.
