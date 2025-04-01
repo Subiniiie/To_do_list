@@ -33,7 +33,7 @@ export interface ListType {
 
 export interface Content {
     open: boolean;
-    setOpen : () => void;
+    setOpen : (value: boolean) => void;
 }
 
 export interface NotificationOptions {

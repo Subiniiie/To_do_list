@@ -3,5 +3,5 @@ import { Content } from "./type";
 
 export const useOpen = create<Content>((set) => ({
     open: false,
-    setOpen: () => set((state) => ({ open: !state.open })),
+    setOpen: (value) => set(() => ({ open: value })),
 }));
