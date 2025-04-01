@@ -72,7 +72,7 @@ const useCreate = () => {
     };
 
     useEffect(() => {
-        console.log('open상태', open, setOpen);
+        console.log('open상태', open);
         if (open) {
             changeTitle("Create New To do");
         } else {
