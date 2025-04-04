@@ -6,10 +6,9 @@ import useItem from "../Main/useItem";
 import { useSettingStore } from "../../store/setting";
 import useNotification from "../Common/useNotification";
 import usePreventLeave from "../Common/usePreventLeave";
-import useTitle from "../Common/useTitle";
 
 const useCreate = () => {
-    const { open, setOpen } = useOpen();
+    const { setOpen } = useOpen();
     const { handleSettingBtn } = useSetting();
     const { setTodos } = useList();
     const { handleChoice, handleSort } = useItem();
@@ -23,8 +22,6 @@ const useCreate = () => {
     const triggerNotif = useNotification("게시물 생성 완료", {
         body: "게시물 생성이 완료되었습니다."
     });
-
-    const changeTitle = useTitle("To do list");
 
     const handleModal = useCallback(( index: number ) => {
         if (index === 0 ) {
@@ -47,38 +44,30 @@ const useCreate = () => {
         handleModal(0);
         handleSettingBtn();
     };
-
+    
     const prohibitClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation();
     };
-
+    
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
 
+    
     const handleSubmit = () => {
         setTodos(value, startDate, endDate);
         setValue('');
-        setOpen(false);
+        setOpen(true);
         triggerNotif();
     };
-
+    
     const checkboxOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         setCheckedAllDay((checkedAllDay) => !checkedAllDay);
     };
-
+    
     const clickCancel = () => {
         setOpen(false);
     };
-
-    useEffect(() => {
-        console.log('open상태', open);
-        if (open) {
-            changeTitle("Create New To do");
-        } else {
-            changeTitle("To do list");
-        }
-    }, [open]);
 
     useEffect(() => {
         if (checkedAllDay) {
