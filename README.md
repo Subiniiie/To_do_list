@@ -160,3 +160,30 @@ setFilteredTodos: (searchText) => {
     ```
   - ***Zustand의 set함수***와 ***switch문***을 활용하여 type이 변경될 때마다 todos에 있는 데이터들의 순서를 변경했습니다.
   - ***sort()*** 를 활용해 타입이 createAsc일 땐 id의 값을 비교하여 id가 작은 순서대로 옵니다. 타입이 startDateAsc일 땐 시작 날짜를 기준으로 작은 값에서 큰 값을 뺍니다. 결과가 음수이면 순서를 유지하고 양수이면 순서가 변경됩니다. 타입이 startDateDesc일 땐 시작 날짜를 기준으로 큰 값에서 작은 값을 뺍니다. 결과가 양수이면 순서를 유지하고 음수이면 결과가 바뀝니다.
+    
+### 6. 투두리스트 생성 중 창 닫을 시 경고
+- 투두리스트를 만드는 모달이 열려있을 때 브라우저를 닫으려고 하 경고창을 띄웁니다.
+```
+const usePreventLeave = () => {
+const listener = (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = "";
+};
+
+const enablePrevent = () => {
+    window.addEventListener("beforeunload", listener);
+};
+
+const disablePrevent = () => {
+    window.removeEventListener("beforeunload", listener);
+};
+
+return {
+    enablePrevent,
+    disablePrevent
+};
+}
+
+export default usePreventLeave;
+```
+- ***usePreventLeave***함수는 모달이 열렸을 때 ***beforeunload 이벤트***를 사용하여 정말 브라우저를 닫을 건지 한 번 더 물어봅니다.  
