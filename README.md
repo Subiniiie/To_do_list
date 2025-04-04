@@ -186,4 +186,37 @@ return {
 
 export default usePreventLeave;
 ```
-- ***usePreventLeave***함수는 모달이 열렸을 때 ***beforeunload 이벤트***를 사용하여 정말 브라우저를 닫을 건지 한 번 더 물어봅니다.  
+- ***usePreventLeave***함수는 모달이 열렸을 때 ***beforeunload 이벤트***를 사용하여 정말 브라우저를 닫을 건지 한 번 더 물어봅니다.
+
+### 7. 마지막 게시물 안내
+- 리스트에서 스크롤을 계속 내릴 시 마지막 게시물임을 안내합니다.
+```
+hooks/Common/useScroll.ts
+
+const [ scrollY, setScrollY ] = useState<number>(0);
+
+useEffect(() => {
+    const handleScroll = () => {
+        if (ref.current) {
+            const scrollPosition = ref.current.scrollTop;
+            setScrollY(scrollPosition);
+        };
+    };
+
+useEffect(() => {
+    if (scrollY !== 0 && ref.current && Math.ceil(scrollY) === ref.current.scrollHeight - ref.current.clientHeight && !notifTriggered.current) {
+        triggerLastItemNotif();
+        notifTriggered.current = true;
+    } else {
+        notifTriggered.current = false;
+    }
+}, [scrollY, triggerLastItemNotif])
+```
+```
+components/Main/TodoListContainer.tsx
+
+const { ref } = useScroll();
+<BoxWrapper ref={ref}>
+```
+- ***useScroll***을 사용하여 스크롤의 위치를 감지합니다. ***scrollY !== 0 && ref.current && Math.ceil(scrollY) === ref.current.scrollHeight - ref.current.clientHeight && !notifTriggered.current 조건을 충족하면 마지막 게시물에서 계속 스크롤을 내리고 있는*** 것이므로 useNotification을 이용하여 마지막 게시물임을 안내합니다.
+
